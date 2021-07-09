@@ -1,0 +1,20 @@
+name: BookSignature
+main: ru.nightmirror.main.BookSignature
+version: 1.0
+author: NightMirror
+description: This plugin will allow players to sign the book. It is perfectly suitable for RP servers.
+api-version: 1.16
+commands:
+  bs:
+    usage: /bs
+    description: Main plugin command.
+  sign:
+    usage: /sign
+    description: This command can be used to sign a book.
+permissions:
+  bs.reload:
+    default: op
+    description: Gives access to reload the plugin.
+  bs.sign:
+    default: not op
+    description: Gives access to use /sign command

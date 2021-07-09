@@ -1,0 +1,6 @@
+# Welcome to config of BookSignature plugin.
+
+not-permission: '&cYou do not have permission!'
+not-found-book: '&6Please take the signed book in your hand.'
+signed: '&bSigned by:'
+plugin-reloaded: '&6Plugin reloaded!'
