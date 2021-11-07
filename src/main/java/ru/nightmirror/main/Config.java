@@ -23,19 +23,7 @@ public class Config {
         config = plugin.getConfig();
     }
 
-    public String getPluginReloaded() {
-        return config.getString("plugin-reloaded").replace("&", "§");
-    }
-
-    public String getNoFoundBook() {
-        return config.getString("not-found-book").replace("&", "§");
-    }
-
-    public String getNotPermission() {
-        return config.getString("not-permission").replace("&", "§");
-    }
-
-    public String getSigned() {
-        return config.getString("signed").replace("&", "§");
+    public String getLine(String path) {
+        return config.getString(path).replace("&", "§");
     }
 }

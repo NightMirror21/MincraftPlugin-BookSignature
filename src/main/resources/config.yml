@@ -1,6 +1,9 @@
 # Welcome to config of BookSignature plugin.
 
 not-permission: '&cYou do not have permission!'
-not-found-book: '&6Please take the signed book in your hand.'
+not-found-book: '&6Please take the signed book in your hand'
+command-only-for-players: '&6Sorry, this command only for players'
 signed: '&bSigned by:'
+player-online: '&aOnline'
+player-offline: '&cOffline'
 plugin-reloaded: '&6Plugin reloaded!'

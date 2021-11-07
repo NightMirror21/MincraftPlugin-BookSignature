@@ -14,9 +14,7 @@ public class BookSignature extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        log.info(ChatColor.GOLD + "Loading...");
-
-        // Check config
+        // Setup and check config
         Config config = new Config();
         config.setPlugin(this);
         config.check();
@@ -25,6 +23,8 @@ public class BookSignature extends JavaPlugin {
         getCommand("bs").setExecutor(new BsCommand(this));
         getCommand("bs").setTabCompleter(new BsTabComplete());
         getCommand("sign").setExecutor(new SignCommand());
+
+        new Thread(new Refresher(this)).start();
 
         log.info(ChatColor.GOLD + "Enabled.");
     }

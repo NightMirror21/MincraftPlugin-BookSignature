@@ -20,16 +20,17 @@ public class BsCommand implements CommandExecutor {
         if (strings.length > 0) {
             if (strings[0].equals("reload")) {
                 Config config = new Config();
+
                 if (commandSender instanceof Player) {
                     if (commandSender.hasPermission("bs.reload") || commandSender.isOp()) {
                         config.check();
-                        commandSender.sendMessage(config.getPluginReloaded());
+                        commandSender.sendMessage(config.getLine("plugin-reloaded"));
                     } else {
-                        commandSender.sendMessage(config.getNotPermission());
+                        commandSender.sendMessage(config.getLine("not-permission"));
                     }
                 } else {
                     config.check();
-                    commandSender.sendMessage(config.getPluginReloaded());
+                    commandSender.sendMessage(config.getLine("plugin-reloaded"));
                 }
             }
         }

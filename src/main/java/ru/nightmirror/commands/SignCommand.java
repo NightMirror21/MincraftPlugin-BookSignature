@@ -14,11 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SignCommand implements CommandExecutor {
+
+    private final Config CONFIG = new Config();
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
-            Config config = new Config();
+
             if (player.hasPermission("bs.sign") || player.isOp()) {
                 if (player.getInventory().getItemInMainHand().getType().equals(Material.WRITTEN_BOOK)) {
 
@@ -27,25 +30,29 @@ public class SignCommand implements CommandExecutor {
                     List<String> bookLore = bookMeta.getLore();
 
                     String nickname = player.getName();
+
                     if (bookLore == null) {
-                        List<String> newLore = new ArrayList<String>();
-                        newLore.add(config.getSigned());
-                        newLore.add(ChatColor.WHITE + nickname);
+                        List<String> newLore = new ArrayList<>();
+
+                        newLore.add(CONFIG.getLine("signed"));
+                        newLore.add(ChatColor.WHITE + nickname + " " + CONFIG.getLine("player-online"));
+
                         bookMeta.setLore(newLore);
-                    } else if (bookLore.contains(config.getSigned()) && !bookLore.contains(ChatColor.WHITE + nickname)) {
-                        bookLore.add(ChatColor.WHITE + nickname);
+                    } else if (bookLore.contains(CONFIG.getLine("signed")) && !bookLore.contains(nickname)) {
+                        bookLore.add(ChatColor.WHITE + nickname + " " + CONFIG.getLine("player-online"));
+
                         bookMeta.setLore(bookLore);
                     }
 
                     book.setItemMeta(bookMeta);
                 } else {
-                    player.sendMessage(config.getNoFoundBook());
+                    player.sendMessage(CONFIG.getLine("not-found-book"));
                 }
             } else {
-                commandSender.sendMessage(config.getNotPermission());
+                commandSender.sendMessage(CONFIG.getLine("not-permission"));
             }
         } else {
-            commandSender.sendMessage("This command only for players, sorry.");
+            commandSender.sendMessage(CONFIG.getLine("command-only-for-players"));
         }
         return true;
     }
