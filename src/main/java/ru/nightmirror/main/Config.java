@@ -6,8 +6,14 @@ import java.io.File;
 
 public class Config {
 
-    private static BookSignature plugin;
-    private static FileConfiguration config;
+    private static Config instance;
+    private BookSignature plugin;
+    private FileConfiguration config;
+
+    public static Config getInstance() {
+        if (instance == null) instance = new Config();
+        return instance;
+    }
 
     public void setPlugin(BookSignature plugin) {
         this.plugin = plugin;

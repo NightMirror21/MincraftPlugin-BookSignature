@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public class Refresher implements Runnable {
 
-    private BookSignature plugin;
+    private final BookSignature plugin;
     private final Logger LOG = Logger.getLogger("BookSignature");
-    private final Config CONFIG = new Config();
+    private final Config CONFIG = Config.getInstance();
 
     public Refresher(BookSignature plugin) {
         this.plugin = plugin;

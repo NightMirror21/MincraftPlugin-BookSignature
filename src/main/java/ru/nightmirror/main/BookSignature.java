@@ -15,12 +15,12 @@ public class BookSignature extends JavaPlugin {
     @Override
     public void onEnable() {
         // Setup and check config
-        Config config = new Config();
+        Config config = Config.getInstance();
         config.setPlugin(this);
         config.check();
 
         // Register commands and set tab complete
-        getCommand("bs").setExecutor(new BsCommand(this));
+        getCommand("bs").setExecutor(new BsCommand());
         getCommand("bs").setTabCompleter(new BsTabComplete());
         getCommand("sign").setExecutor(new SignCommand());
 

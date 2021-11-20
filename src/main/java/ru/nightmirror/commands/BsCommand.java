@@ -9,28 +9,22 @@ import ru.nightmirror.main.Config;
 
 public class BsCommand implements CommandExecutor {
 
-    private BookSignature plugin;
-
-    public BsCommand(BookSignature plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length > 0) {
             if (strings[0].equals("reload")) {
-                Config config = new Config();
+                final Config CONFIG = Config.getInstance();
 
                 if (commandSender instanceof Player) {
                     if (commandSender.hasPermission("bs.reload") || commandSender.isOp()) {
-                        config.check();
-                        commandSender.sendMessage(config.getLine("plugin-reloaded"));
+                        CONFIG.check();
+                        commandSender.sendMessage(CONFIG.getLine("plugin-reloaded"));
                     } else {
-                        commandSender.sendMessage(config.getLine("not-permission"));
+                        commandSender.sendMessage(CONFIG.getLine("not-permission"));
                     }
                 } else {
-                    config.check();
-                    commandSender.sendMessage(config.getLine("plugin-reloaded"));
+                    CONFIG.check();
+                    commandSender.sendMessage(CONFIG.getLine("plugin-reloaded"));
                 }
             }
         }

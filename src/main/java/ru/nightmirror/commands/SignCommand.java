@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SignCommand implements CommandExecutor {
 
-    private final Config CONFIG = new Config();
+    private final Config CONFIG = Config.getInstance();
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
