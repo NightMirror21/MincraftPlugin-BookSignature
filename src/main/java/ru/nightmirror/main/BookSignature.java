@@ -1,5 +1,6 @@
 package ru.nightmirror.main;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.nightmirror.commands.BsCommand;
@@ -25,6 +26,8 @@ public class BookSignature extends JavaPlugin {
         getCommand("sign").setExecutor(new SignCommand());
 
         new Thread(new Refresher(this)).start();
+
+        Metrics metrics = new Metrics(this, 13841);
 
         log.info(ChatColor.GOLD + "Enabled.");
     }
